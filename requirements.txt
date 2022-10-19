@@ -1,0 +1,9 @@
+kfp==1.4.0
+kfp-pipeline-spec==0.1.7
+kfp-server-api==1.4.1
+Flask==1.1.2
+Flask-API==2.0
+Flask-Cors==3.0.10
+requests==2.25.1
+Werkzeug==1.0.1
+
