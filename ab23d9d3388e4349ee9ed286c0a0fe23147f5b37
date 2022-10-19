@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c0dc5d5f_063f0065",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1001949
+      },
+      "writtenOn": "2022-10-19T05:06:06Z",
+      "side": 1,
+      "message": "Looks good for initial commit",
+      "revId": "ab23d9d3388e4349ee9ed286c0a0fe23147f5b37",
+      "serverId": "84e4e190-e623-4c37-9eda-58b1937c1b53"
+    }
+  ]
+}
