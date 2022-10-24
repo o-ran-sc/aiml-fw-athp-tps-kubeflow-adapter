@@ -39,10 +39,15 @@ committers:
       company: 'Samsung Electronics'
       id: 'josephthaliath'
       timezone: 'Asia/Seoul'
-    - name: 'Ashish Jain'
-      email: 'jain.ashish@samsung.com'
+    - name: 'Minha Lee'
+      email: 'minhac.lee@samsung.com'
       company: 'Samsung Electronics'
-      id: 'ashishj1729'
+      id: 'minhalee'
+      timezone: 'Asia/Seoul'    
+    - name: 'Youhwan Seol   '
+      email: 'yh.seol@samsung.com'
+      company: 'Samsung Electronics'
+      id: 'yhseol'
       timezone: 'Asia/Seoul'
 tsc:
     # yamllint disable rule:line-length
