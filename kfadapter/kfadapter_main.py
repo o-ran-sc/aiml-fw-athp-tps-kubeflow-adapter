@@ -171,7 +171,7 @@ def get_versions_for_pipeline(pipeline_name):
 
     Returns:
         json dict:
-            it contains versons list for given pipeline name
+            it contains versions list for given pipeline name
 
         status: HTTP status 200
 
@@ -501,9 +501,9 @@ def kf_run(run_id):
                    {'ext': 1})
 
         run_info = KFCONNECT_KF_OBJ.get_kf_run(run_id)
-        run_dict['run_id'] = run_info.run.id
-        run_dict['run_name'] = run_info.run.name
-        run_dict['run_status'] = run_info.run.status
+        run_dict['run_id'] = run_info.id
+        run_dict['run_name'] = run_info.name
+        run_dict['run_status'] = run_info.status
         LOGGER.debug(run_dict)
     except Exception as err:
         LOGGER.error("Exception from KubeFlow in run")
