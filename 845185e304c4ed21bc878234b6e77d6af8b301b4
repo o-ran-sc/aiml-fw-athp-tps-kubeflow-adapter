@@ -16,6 +16,23 @@
       "message": "Looks good for initial commit",
       "revId": "845185e304c4ed21bc878234b6e77d6af8b301b4",
       "serverId": "84e4e190-e623-4c37-9eda-58b1937c1b53"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9b837be7_27da1621",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1001907
+      },
+      "writtenOn": "2022-10-31T01:12:49Z",
+      "side": 1,
+      "message": "Looks good for initial commit",
+      "revId": "845185e304c4ed21bc878234b6e77d6af8b301b4",
+      "serverId": "84e4e190-e623-4c37-9eda-58b1937c1b53"
     }
   ]
 }
