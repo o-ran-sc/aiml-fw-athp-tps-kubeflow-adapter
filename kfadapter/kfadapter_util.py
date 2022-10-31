@@ -28,7 +28,7 @@ import time
 import json
 import requests
 from flask_api import status
-# import kfadapter_conf
+import kfadapter_conf
 
 class BadRequest(Exception):
     """
