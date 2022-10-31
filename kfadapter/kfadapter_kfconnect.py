@@ -42,6 +42,8 @@ class KfConnect:
         self.logger = kfc_config.logger
         self.logger.debug("Initialized KfConnect")
 
+    def set_kf_client(self, kfp_client):
+        self.kfp_client = kfp_client
 
     def get_kf_client(self, host=None):
         """
