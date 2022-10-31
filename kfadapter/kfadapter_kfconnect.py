@@ -22,7 +22,7 @@ This module is for interfacing and interworking with KubeFlow SDK
 
 """
 import kfp
-import kfadapter_util
+from kfadapter_util import random_suffix
 from kfadapter_conf import KfConfiguration
 
 class KfConnect:
@@ -263,7 +263,7 @@ class KfConnect:
         """
         self.logger.debug("run_kf_pipeline Entered")
         run = self.kfp_client.run_pipeline(exp_id, job_name="testjob_"+\
-                                           kfadapter_util.random_suffix(),
+                                           random_suffix(),
                                            pipeline_package_path=None, params=arguments,
                                            pipeline_id=pipeline_id,
                                            version_id=version_id)
