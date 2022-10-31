@@ -16,11 +16,9 @@
 #
 # ==================================================================================
 
-import sys
 import os
-sys.path.append("../kfadapter")
-import kfadapter_conf
-import pytest
+
+from kfadapter import kfadapter_conf
 
 class Test_kfadapter_conf:
     KUBEFLOW_HOST_NAME = '127.0.0.1'

@@ -15,15 +15,15 @@
 #   limitations under the License.
 #
 # ==================================================================================
-
 """kfadapter_kfconnect.py.
 
 This module is for interfacing and interworking with KubeFlow SDK
 
 """
 import kfp
-from kfadapter_util import random_suffix
-from kfadapter_conf import KfConfiguration
+
+from .kfadapter_util import random_suffix
+from .kfadapter_conf import KfConfiguration
 
 class KfConnect:
     """

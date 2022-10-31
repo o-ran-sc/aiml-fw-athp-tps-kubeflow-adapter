@@ -15,16 +15,14 @@
 #   limitations under the License.
 #
 # ==================================================================================
-
-import sys
-sys.path.append("kfadapter")
-import kfadapter_main
-from tmgr_logger import TMLogger
+import json 
 
 from flask_api import status
-import json 
-from fake_kfconnect import FakeKfConnect, NegativeFakeAdditionalKfConnect, NegativeFakeKfConnect, NegativeFakeNoneKfConnect
-from fake_kfconf import FakeKfConf
+
+from kfadapter import kfadapter_main
+from kfadapter.tmgr_logger import TMLogger
+from .fake_kfconnect import FakeKfConnect, NegativeFakeAdditionalKfConnect, NegativeFakeKfConnect, NegativeFakeNoneKfConnect
+from .fake_kfconf import FakeKfConf
 
 class Test_pipeline_id_operations:
     

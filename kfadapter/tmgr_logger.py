@@ -1,4 +1,3 @@
-#!/usr/bin/python3
 # ==================================================================================
 #
 #       Copyright (c) 2022 Samsung Electronics Co., Ltd. All Rights Reserved.
@@ -17,13 +16,14 @@
 #
 # ==================================================================================
 """tmgr_logger.py
-This module is for Initializing Logger Framework
-"""
 
+This module is for Initializing Logger Framework
+
+"""
+import os
 import logging
 import logging.config
 import yaml
-
 
 class TMLogger(object):# pylint: disable=too-few-public-methods
     """

@@ -1,9 +1,3 @@
-"""kfadapter_util.py.
-
-This module is for all the utility functions to be used
-by the main and other modules
-
-"""
 # ==================================================================================
 #
 #       Copyright (c) 2022 Samsung Electronics Co., Ltd. All Rights Reserved.
@@ -21,14 +15,21 @@ by the main and other modules
 #   limitations under the License.
 #
 # ==================================================================================
-from random import choices
+"""kfadapter_util.py.
+
+This module is for all the utility functions to be used
+by the main and other modules
+
+"""
+
 import traceback
 import string
 import time
 import json
 import requests
+from random import choices
+
 from flask_api import status
-import kfadapter_conf
 
 class BadRequest(Exception):
     """

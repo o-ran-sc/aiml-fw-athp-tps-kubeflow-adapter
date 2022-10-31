@@ -16,14 +16,12 @@
 #
 # ==================================================================================
 
-import sys
-sys.path.append("kfadapter")
-# import kfadapter_conf
-from kfadapter_kfconnect import KfConnect
-from fake_kfconnect import FakeKfConnect
-from fake_kfp import FakeKfp
-from fake_kfp import FakeNegativeKfp
 import kfp_server_api
+
+from kfadapter.kfadapter_kfconnect import KfConnect
+
+from .fake_kfp import FakeKfp
+from .fake_kfp import FakeNegativeKfp
 
 class Test_KfConnect:
     def setup_method(self):

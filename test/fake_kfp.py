@@ -23,9 +23,6 @@ from kfp_server_api.models.api_pipeline_version import ApiPipelineVersion
 from kfp_server_api.models.api_experiment import ApiExperiment
 from kfp_server_api.models.api_run_detail import ApiRunDetail
 from kfp_server_api.models.api_run import ApiRun
-
-
-
 import kfp_server_api
 
 class FakeKfp:

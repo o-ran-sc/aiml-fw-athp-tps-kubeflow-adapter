@@ -1,4 +1,3 @@
-#!/usr/bin/python3
 # ==================================================================================
 #
 #       Copyright (c) 2022 Samsung Electronics Co., Ltd. All Rights Reserved.
@@ -16,7 +15,6 @@
 #   limitations under the License.
 #
 # ==================================================================================
-
 """kfadapter_conf.py
 
 This module is for retrieving configuration for KfAdapter App
@@ -25,9 +23,11 @@ Application configuration - Application Port and run status interval
 
 
 """
+
 from os import getenv
 from threading import Lock
-from tmgr_logger import TMLogger
+
+from .tmgr_logger import TMLogger
 
 TRAINING_DICT = {}
 LOCK = Lock()

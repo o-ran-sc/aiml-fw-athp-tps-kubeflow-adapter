@@ -16,12 +16,7 @@
 #
 # ==================================================================================
 
-import pytest
-import sys
-import string
-from mock import patch
-sys.path.append("../kfadapter")
-import kfadapter_util
+from kfadapter import kfadapter_util
 
 class Test_kfadapter_util:
     def setup_method(self):

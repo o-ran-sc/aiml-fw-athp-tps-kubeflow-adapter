@@ -1,4 +1,3 @@
-#!/usr/bin/python3
 # ==================================================================================
 #
 #       Copyright (c) 2022 Samsung Electronics Co., Ltd. All Rights Reserved.
@@ -31,12 +30,13 @@ import os
 import traceback
 import json
 from threading import Thread
+
 from flask import Flask, request, jsonify
 from flask_api import status
 import kfp_server_api
-from kfadapter_kfconnect import KfConnect
-import kfadapter_conf
-from kfadapter_util import BadRequest, wait_status_thread, keys_match, check_map
+
+from .kfadapter_kfconnect import KfConnect
+from .kfadapter_util import BadRequest, wait_status_thread, keys_match, check_map
 
 #Handles to Config and Kubeflow
 KFCONNECT_CONFIG_OBJ = None

@@ -1,5 +1,3 @@
-// test/unit_test.sh
-
 # ==================================================================================
 #
 #       Copyright (c) 2022 Samsung Electronics Co., Ltd. All Rights Reserved.
