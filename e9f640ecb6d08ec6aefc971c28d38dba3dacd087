@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "86e949fe_1ae0fd01",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000402
+      },
+      "writtenOn": "2022-11-01T00:16:07Z",
+      "side": 1,
+      "message": "Thanks for tidy up and detail commit messages 😊",
+      "revId": "e9f640ecb6d08ec6aefc971c28d38dba3dacd087",
+      "serverId": "84e4e190-e623-4c37-9eda-58b1937c1b53"
+    }
+  ]
+}
