@@ -35,6 +35,7 @@ from flask import Flask, request, jsonify
 from flask_api import status
 import kfp_server_api
 
+from . import kfadapter_conf
 from .kfadapter_kfconnect import KfConnect
 from .kfadapter_util import BadRequest, wait_status_thread, keys_match, check_map
 
@@ -197,7 +198,7 @@ def get_versions_for_pipeline(pipeline_name):
 
 
 @APP.route("/pipelines/<pipe_id>", methods=['GET', 'DELETE'])
-def pipelinei(pipe_id):
+def get_pipeline(pipe_id):
     """Function handling HTTP GET/DELETE rest endpoint to get/delete pipeline based on
        pipeline id from kubeflow
 
