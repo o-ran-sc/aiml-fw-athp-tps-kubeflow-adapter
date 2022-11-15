@@ -31,6 +31,8 @@ from random import choices
 
 from flask_api import status
 
+import kfadapter_conf
+
 class BadRequest(Exception):
     """
     This is a class for throwing custom exception  when local error occurs
