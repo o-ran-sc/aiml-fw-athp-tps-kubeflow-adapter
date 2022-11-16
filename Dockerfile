@@ -16,6 +16,8 @@
 #
 # ==================================================================================
 #Base Image
+FROM nexus3.o-ran-sc.org:10002/o-ran-sc/bldr-ubuntu18-c-go:1.9.0 as ubuntu
+
 FROM ubuntu:18.04
 
 # location in the container
