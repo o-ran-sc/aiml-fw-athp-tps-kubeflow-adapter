@@ -1,0 +1,7 @@
+Verified+1: ORAN Jobbuilder <releng+oran-jobbuilder@linuxfoundation.org>
+Code-Review+2: minha lee <minhac.lee@samsung.com>
+Submitted-by: minha lee <minhac.lee@samsung.com>
+Submitted-at: Mon, 12 Dec 2022 04:00:39 +0000
+Reviewed-on: https://gerrit.o-ran-sc.org/r/c/aiml-fw/athp/tps/kubeflow-adapter/+/10044
+Project: aiml-fw/athp/tps/kubeflow-adapter
+Branch: refs/heads/master
