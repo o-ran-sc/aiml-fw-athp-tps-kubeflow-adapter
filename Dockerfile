@@ -16,7 +16,8 @@
 #
 # ==================================================================================
 #Base Image
-FROM nexus3.o-ran-sc.org:10002/o-ran-sc/bldr-ubuntu18-c-go:1.9.0 as ubuntu
+#FROM nexus3.o-ran-sc.org:10002/o-ran-sc/bldr-ubuntu18-c-go:1.9.0 as ubuntu
+FROM art.sec.samsung.net/rs7-edgecomputing_docker/bldr-ubuntu18-c-go:1.9.0 as ubuntu
 
 FROM ubuntu:18.04
 
@@ -33,6 +34,7 @@ WORKDIR ${TA_DIR}
 COPY . .
 
 #Install the pip3 requirements
+RUN pip3 install .
 RUN pip3 install -r requirements.txt
 
 #Expose the ports
