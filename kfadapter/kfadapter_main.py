@@ -35,7 +35,7 @@ from flask import Flask, request, jsonify
 from flask_api import status
 import kfp_server_api
 
-import kfadapter.kfadapter_conf
+from kfadapter import kfadapter_conf
 from kfadapter.kfadapter_kfconnect import KfConnect
 from kfadapter.kfadapter_util import BadRequest, wait_status_thread, keys_match, check_map
 
