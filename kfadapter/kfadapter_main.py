@@ -35,9 +35,9 @@ from flask import Flask, request, jsonify
 from flask_api import status
 import kfp_server_api
 
-import kfadapter_conf
-from kfadapter_kfconnect import KfConnect
-from kfadapter_util import BadRequest, wait_status_thread, keys_match, check_map
+import kfadapter.kfadapter_conf
+from kfadapter.kfadapter_kfconnect import KfConnect
+from kfadapter.kfadapter_util import BadRequest, wait_status_thread, keys_match, check_map
 
 #Handles to Config and Kubeflow
 KFCONNECT_CONFIG_OBJ = None
