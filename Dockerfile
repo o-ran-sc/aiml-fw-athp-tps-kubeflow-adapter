@@ -33,6 +33,7 @@ WORKDIR ${TA_DIR}
 COPY . .
 
 #Install the pip3 requirements
+RUN pip3 install .
 RUN pip3 install -r requirements.txt
 
 #Expose the ports

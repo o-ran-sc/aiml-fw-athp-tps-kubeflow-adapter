@@ -31,7 +31,7 @@ from random import choices
 
 from flask_api import status
 
-import kfadapter_conf
+import kfadapter.kfadapter_conf
 
 class BadRequest(Exception):
     """

@@ -1,4 +1,4 @@
-#==================================================================================
+# ==================================================================================
 #
 #       Copyright (c) 2022 Samsung Electronics Co., Ltd. All Rights Reserved.
 #
@@ -16,16 +16,16 @@
 #
 # ==================================================================================
 
-from kfadapter.tmgr_logger import TMLogger
+from setuptools import setup, find_packages
 
-class Test_tmgr_logger:
-    def setup_method(self):
-        self.TMGR_LOGGER_OBJ = TMLogger("config/log_config.yaml")
-        
-    def test_get_loglevel(self):
-        ret = self.TMGR_LOGGER_OBJ.get_logLevel
-        assert ret == 'DEBUG'
-    
-    def test_get_logger(self):
-        ret = self.TMGR_LOGGER_OBJ.get_logger
-        assert ret != None
+setup(
+    name="kfadapter",
+    version="0.1",
+    packages=find_packages(exclude=["tests"]),
+    author='MINHA LEE/YOUHWAN SEOL',
+    author_email='minhac.lee@samsung.com/', 
+    description="AIMLFW Kubeflow adapter",
+    url="https://gerrit.o-ran-sc.org/r/admin/repos/aiml-fw/athp/tps/kubeflow-adapter,general",
+    keywords="AIMLWF KFADAPTER",
+    license="Apache 2.0",
+)
