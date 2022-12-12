@@ -27,7 +27,7 @@ Application configuration - Application Port and run status interval
 from os import getenv
 from threading import Lock
 
-from tmgr_logger import TMLogger
+from kfadapter.tmgr_logger import TMLogger
 
 TRAINING_DICT = {}
 LOCK = Lock()
@@ -65,7 +65,7 @@ class KfConfiguration:
 
         self.kf_dict = {}
         self.trainingmgr_dict = {}
-        self.tmgr_logger = TMLogger("../config/log_config.yaml")
+        self.tmgr_logger = TMLogger("config/log_config.yaml")
         self.logger = self.tmgr_logger.logger
 
         self.run_status_polling_interval_sec = 20
