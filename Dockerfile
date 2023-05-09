@@ -35,6 +35,7 @@ COPY . .
 #Install the pip3 requirements
 RUN pip3 install .
 RUN pip3 install -r requirements.txt
+RUN pip3 install requests-toolbelt==0.10.1
 
 #Expose the ports
 EXPOSE 5000
