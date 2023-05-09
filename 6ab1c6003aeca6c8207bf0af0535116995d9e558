@@ -1,0 +1,7 @@
+Code-Review+2: Joseph Thaliath <jo.thaliath@samsung.com>
+Verified+1: ORAN Jobbuilder <releng+oran-jobbuilder@linuxfoundation.org>
+Submitted-by: Joseph Thaliath <jo.thaliath@samsung.com>
+Submitted-at: Tue, 09 May 2023 05:58:47 +0000
+Reviewed-on: https://gerrit.o-ran-sc.org/r/c/aiml-fw/athp/tps/kubeflow-adapter/+/11048
+Project: aiml-fw/athp/tps/kubeflow-adapter
+Branch: refs/heads/master
