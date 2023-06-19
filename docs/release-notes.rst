@@ -4,8 +4,9 @@
 .. Copyright (c) 2022 Samsung Electronics Co., Ltd. All Rights Reserved.
 
 
+=============
 Release-Notes
--------------
+=============
 
 This document provides the release notes for the G release of AIMLFW Kubeflow adapter module
 
@@ -14,7 +15,7 @@ This document provides the release notes for the G release of AIMLFW Kubeflow ad
    :local:
 
 Version history
----------------
+===============
 
 +--------------------+--------------------+--------------------+--------------------+
 | **Date**           | **Ver.**           | **Author**         | **Comment**        |
@@ -23,16 +24,43 @@ Version history
 | 2022-12-08         | 1.0.0              | Joseph Thaliath    | G release          |
 |                    |                    |                    |                    |
 +--------------------+--------------------+--------------------+--------------------+
+| 2023-06-29         | 1.1.0              | Joseph Thaliath    | H release          |
+|                    |                    |                    |                    |
++--------------------+--------------------+--------------------+--------------------+
 
 
 Summary
--------
+=======
 
-The G release of AIMLFW Kubeflow adapter supports connectivity to Kubeflow for creating AI/ML training pipelines and executing AI/ML training jobs
+The AIMLFW Kubeflow adapter supports connectivity to Kubeflow for creating AI/ML training pipelines and executing AI/ML training jobs
 
 
 Release Data
-------------
+============
+
+H Release
+---------
+
++--------------------------------------+------------------------------------------------+
+| **Project**                          | AIMLFW Kubeflow adapter                        |
+|                                      |                                                |
++--------------------------------------+------------------------------------------------+
+| **Repo/commit-ID**                   | aiml-fw/athp/tps/kubeflow-adapter              |
+|                                      | /903e6ce692270629ed238d4c6889c423fc81cdea      |
++--------------------------------------+------------------------------------------------+
+| **Release designation**              | H release                                      |
+|                                      |                                                |
++--------------------------------------+------------------------------------------------+
+| **Release date**                     | 2023-06-29                                     |
+|                                      |                                                |
++--------------------------------------+------------------------------------------------+
+| **Purpose of the delivery**          | Minor updates                                  |
+|                                      |                                                |
++--------------------------------------+------------------------------------------------+
+
+
+G Release
+---------
 
 +--------------------------------------+--------------------------------------+
 | **Project**                          | AIMLFW Kubeflow adapter              |
