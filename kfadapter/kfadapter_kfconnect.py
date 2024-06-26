@@ -262,10 +262,20 @@ class KfConnect:
 
         """
         self.logger.debug("run_kf_pipeline Entered")
-        run = self.kfp_client.run_pipeline(exp_id, job_name="testjob_"+\
+        job_name=arguments["trainingjob_name"]
+        req_dict={
+            "trainingjob_name":job_name,
+            "epochs": arguments["epochs"],
+            "version": str(arguments["version"])
+        }
+        try:
+            run = self.kfp_client.run_pipeline(exp_id, job_name="testjob"+\
                                            random_suffix(),
-                                           pipeline_package_path=None, params=arguments,
+                                           pipeline_package_path=None, params=req_dict,
                                            pipeline_id=pipeline_id,
                                            version_id=version_id)
+        except Exception as err:
+            self.logger.error(str(err))
+
         self.logger.debug("run_kf_pipeline Exited")
         return run

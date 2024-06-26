@@ -82,7 +82,11 @@ class Test_KfConnect:
         assert None == self.__KFCONNECT.delete_kf_pipeline(pipeline_id='pipeline_id')
 
     def test_run_kf_pipeline(self):
-        assert None == self.__KFCONNECT.run_kf_pipeline(exp_id='exp_id', pipeline_id='pipeline_id', arguments='arguments', version_id='version_id')
+        assert None == self.__KFCONNECT.run_kf_pipeline(exp_id='exp_id', pipeline_id='pipeline_id', arguments={
+            "trainingjob_name":"job_name",
+            "epochs": "epochs",
+            "version": "version"}
+        , version_id='version_id')
     
 
 class Test_Negative_KfConnect:
