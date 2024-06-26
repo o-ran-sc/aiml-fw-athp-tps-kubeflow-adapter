@@ -372,39 +372,22 @@ def run_pipeline(trainingjob_name):
 
             LOGGER.debug("Pipeline ID = " + pipe_id)
 
-            pipe_arg = {}
-            LOGGER.debug("Getting pipeline desc")
-
-            pipeline_info = KFCONNECT_KF_OBJ.get_kf_pipeline_desc(pipe_id)
-            LOGGER.debug(pipeline_info)
-            for parameter in pipeline_info.default_version.parameters:
-                pipe_arg[parameter.name] = parameter.value
-            LOGGER.debug("Arguments provided " + str(arguments.keys()))
-            LOGGER.debug("Arguments in pipeline " + str(pipe_arg.keys()))
-            args_match = keys_match(arguments, pipe_arg)
-            if args_match is False:
-                LOGGER.error("arguments: "+str(arguments))
-                LOGGER.error("pipe_arg: "+str(pipe_arg))
-                raise ValueError("Arguments does not match with pipeline arguments")
-
             version_id = KFCONNECT_KF_OBJ.get_kf_pipeline_version_id(pipe_id, pipeline_version_name)
             LOGGER.debug("Running pipeline")
-            run = KFCONNECT_KF_OBJ.run_kf_pipeline(exp.id, pipe_id, arguments, version_id)
-            LOGGER.debug("Run ID = %s", run.id)
+            run = KFCONNECT_KF_OBJ.run_kf_pipeline(exp.experiment_id, pipe_id, arguments, version_id)
+            LOGGER.debug("Run ID = %s", run.run_id)
             run_dict['trainingjob_name'] = trainingjob_name
-            run_dict['run_id'] = run.id
-            run_dict['run_name'] = run.name
-            run_dict['experiment_name'] = run.resource_references[0].name
-            run_dict['experiment_id'] = run.resource_references[0].key.id
+            run_dict['run_id'] = run.run_id
+            run_dict['run_name'] = run.display_name
+            run_dict['experiment_name'] = 'Default'
+            run_dict['experiment_id'] = run.experiment_id
 
-            if len(run.resource_references) > 1:
-                run_dict['pipeline_name'] = run.resource_references[1].name
-                run_dict['pipeline_id'] = run.resource_references[1].key.id
-
-            if run.status is None:
+            run_dict['pipeline_name'] = pipe_name
+            run_dict['pipeline_id'] = run.pipeline_version_reference.pipeline_id
+            if run.state == 'PENDING':
                 run_dict['run_status'] = "scheduled"
                 with kfadapter_conf.LOCK:
-                    kfadapter_conf.TRAINING_DICT[run.id] = trainingjob_name
+                    kfadapter_conf.TRAINING_DICT[run.run_id] = trainingjob_name
         else:
             errcode = status.HTTP_400_BAD_REQUEST
             err_string = 'Less arguments'
