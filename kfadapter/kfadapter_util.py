@@ -111,7 +111,7 @@ def wait_status_thread(name, kfc_kfconnect):
             for i in dict_copy:
                 try:
                     run = kfc_kfconnect.get_kf_run(i)
-                    run_status = run.run.status
+                    run_status = run.state
                 except: # pylint: disable=bare-except
                     run_status = "Manual reconcile"
 
