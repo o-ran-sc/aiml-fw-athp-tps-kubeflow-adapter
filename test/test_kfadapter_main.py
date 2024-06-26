@@ -119,11 +119,11 @@ class testKfadapterApi(TestCase):
         pipeline_id = "pipeline-id"
 
         pipeline_info = ApiPipeline()
-        pipeline_info.id = pipeline_id
+        pipeline_info.pipeline_id = pipeline_id
         mock_upload_pipeline_with_versions.return_value = pipeline_info
         
         files = {}
-        files['file'] = (io.BytesIO(b"pipeline-file"), 'pipeline.zip')
+        files['file'] = (io.BytesIO(b"pipeline-file"), 'pipeline')
         files['description'] = "pipeline-description"
 
         # when

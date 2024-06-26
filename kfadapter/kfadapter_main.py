@@ -129,17 +129,17 @@ def get_pipeline_id(pipe_name):
             uploaded_file = request.files['file']
             LOGGER.debug("Uploading received for %s", uploaded_file.filename)
             if uploaded_file.filename != '':
-                uploaded_file_path = "/tmp/" + uploaded_file.filename
+                uploaded_file_path = "/tmp/" + uploaded_file.filename + ".yaml"
                 uploaded_file.save(uploaded_file_path)
                 LOGGER.debug("File uploaded :%s", uploaded_file_path)
                 description = request.form['description']
                 pipe_info = KFCONNECT_KF_OBJ.upload_pipeline_with_versions(
-                    pipe_name,
-                    uploaded_file_path,
-                    description)
+                     pipe_name,
+                     uploaded_file_path,
+                     description)
                 LOGGER.debug("Pipeline uploaded :%s", pipe_name)
                 pipe_dict['name'] = pipe_name
-                pipe_dict['id'] = pipe_info.id
+                pipe_dict['id'] = pipe_info.pipeline_id
                 os.remove(uploaded_file_path)
             else:
                 raise Exception("Error saving file from POST")
