@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fa4c97e1_41a39f97",
+        "filename": "requirements.txt",
+        "patchSetId": 2
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1000475
+      },
+      "writtenOn": "2024-06-26T08:37:32Z",
+      "side": 1,
+      "message": "Please check, if there is any alternative.",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 9,
+        "endChar": 19
+      },
+      "revId": "58db35a8dac77d576ff9e184bab7dd513ab983a5",
+      "serverId": "84e4e190-e623-4c37-9eda-58b1937c1b53"
+    }
+  ]
+}
