@@ -310,14 +310,9 @@ def list_pipelines():
         for pipeline in pipeline_list.pipelines:
             pipe_super_dict = {}
             pipe_param_dict = {}
-            pipe_super_dict['id'] = pipeline.id
+            pipe_super_dict['id'] = pipeline.pipeline_id
             pipe_super_dict['description'] = pipeline.description
-            if pipeline.parameters is not None:
-                for parameter in pipeline.parameters:
-                    pipe_param_dict[parameter.name] = parameter.value
-
-            pipe_super_dict['parameters'] = pipe_param_dict
-            pipe_dict[pipeline.name] = pipe_super_dict
+            pipe_dict[pipeline.display_name] = pipe_super_dict
     except:# pylint: disable=bare-except
         tbk = traceback.format_exc()
         LOGGER.error(tbk)

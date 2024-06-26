@@ -189,16 +189,12 @@ class testKfadapterApi(TestCase):
 
     @patch("kfadapter.kfadapter_kfconnect.KfConnect.get_kf_list_pipelines")
     def test_get_pipelines(self, mock_get_kf_list_pipelines):
-        # given
-        parameter = ApiParameter()
-        parameter.name = "param1"
-        parameter.value = "value1"
-        
-        pipeline = ApiPipeline()
-        pipeline.id = "pipeline-id"
-        pipeline.description = "pipeline-description"
 
-        pipeline.parameters = [parameter]
+       #given 
+        pipeline = ApiPipeline()
+        pipeline.pipeline_id = "pipeline-id"
+        pipeline.description = "pipeline-description"
+        pipeline.display_name= "pipeline-name"
 
         pipeline_list = ApiListPipelinesResponse()
         pipeline_list.pipelines = [pipeline]
@@ -212,7 +208,8 @@ class testKfadapterApi(TestCase):
         mock_get_kf_list_pipelines.assert_called_once()
         self.assertEqual(response.content_type, "application/json")
         self.assertEqual(response.status_code, status.HTTP_200_OK)
-        self.assertEqual(response.get_data(), b'{"null":{"description":"pipeline-description","id":"pipeline-id","parameters":{"param1":"value1"}}}\n')
+        print(response.get_data())
+        self.assertEqual(response.get_data(), b'{"pipeline-name":{"description":"pipeline-description","id":"pipeline-id"}}\n')
     
 
     @patch("kfadapter.kfadapter_kfconnect.KfConnect.get_kf_pipeline_desc")
