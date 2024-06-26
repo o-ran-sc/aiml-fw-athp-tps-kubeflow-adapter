@@ -158,21 +158,21 @@ class testKfadapterApi(TestCase):
     def test_get_run(self, mock_get_kf_run):
         # given
         run = ApiRun()
-        run.id = "run-id"
-        run.name = "run-name"
-        run.status = "Running"
+        run.run_id = "run-id"
+        run.display_name = "run-name"
+        run.state = "Running"
         mock_get_kf_run.return_value = run
         
         # when
-        response = self.client.get("/runs/{}".format(run.id))
+        response = self.client.get("/runs/{}".format(run.run_id))
 
         # then
         mock_get_kf_run.assert_called_once()
         self.assertEqual(response.content_type, "application/json")
         self.assertEqual(response.status_code, status.HTTP_200_OK)
-        self.assertEqual(response.get_json()["run_id"], run.id)
-        self.assertEqual(response.get_json()["run_name"], run.name)
-        self.assertEqual(response.get_json()["run_status"], run.status)
+        self.assertEqual(response.get_json()["run_id"], run.run_id)
+        self.assertEqual(response.get_json()["run_name"], run.display_name)
+        self.assertEqual(response.get_json()["run_status"], run.state)
 
 
     def test_delete_run(self):

@@ -502,9 +502,9 @@ def kf_run(run_id):
                    {'ext': 1})
 
         run_info = KFCONNECT_KF_OBJ.get_kf_run(run_id)
-        run_dict['run_id'] = run_info.id
-        run_dict['run_name'] = run_info.name
-        run_dict['run_status'] = run_info.status
+        run_dict['run_id'] = run_info.run_id
+        run_dict['run_name'] = run_info.display_name
+        run_dict['run_status'] = run_info.state
         LOGGER.debug(run_dict)
     except Exception as err:
         LOGGER.error("Exception from KubeFlow in run")
