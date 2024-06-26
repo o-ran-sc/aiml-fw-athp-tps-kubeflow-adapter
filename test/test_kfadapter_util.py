@@ -40,23 +40,23 @@ class Test_kfadapter_util:
         assert str(ret).islower() == True
         
     def test_run_finished_succeeded(self):
-        ret = kfadapter_util.run_finished('Succeeded')
+        ret = kfadapter_util.run_finished('SUCCEEDED')
         assert ret == True
     
     def test_run_finished_failed(self):
-        ret = kfadapter_util.run_finished('Failed')
+        ret = kfadapter_util.run_finished('FAILED')
         assert ret == True
         
     def test_run_finished_error(self):
-        ret = kfadapter_util.run_finished('Error')
+        ret = kfadapter_util.run_finished('ERROR')
         assert ret == True
         
     def test_run_finished_skipped(self):
-        ret = kfadapter_util.run_finished('Skipped')
+        ret = kfadapter_util.run_finished('SKIPPED')
         assert ret == True
         
     def test_run_finished_terminated(self):
-        ret = kfadapter_util.run_finished('Terminated')
+        ret = kfadapter_util.run_finished('TERMINATED')
         assert ret == True
 
     def test_check_list(self):

@@ -77,7 +77,7 @@ def run_finished(run_status: string) -> bool:
             true or false to signify whether run is finished or not
 
     """
-    return run_status in {'Succeeded', 'Failed', 'Error', 'Skipped', 'Terminated'}
+    return run_status in {'SUCCEEDED', 'FAILED', 'ERROR', 'SKIPPED', 'TERMINATED'}
 
 def random_suffix():
     """
