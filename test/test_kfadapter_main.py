@@ -275,8 +275,8 @@ class testKfadapterApi(TestCase):
     def test_get_experiments(self, mock_get_kf_list_experiments):
         # given
         exp = kfp_server_api.ApiExperiment()
-        exp.name = "exp-name"
-        exp.id = "exp-id"
+        exp.display_name = "exp-name"
+        exp.experiment_id = "exp-id"
 
         explist = kfp_server_api.ApiListExperimentsResponse()
         explist.experiments = [exp]
@@ -289,7 +289,7 @@ class testKfadapterApi(TestCase):
         mock_get_kf_list_experiments.assert_called_once()
         self.assertEqual(response.content_type, "application/json")
         self.assertEqual(response.status_code, status.HTTP_200_OK)
-        self.assertEqual(response.get_json()[exp.name], exp.id)
+        self.assertEqual(response.get_json()[exp.display_name], exp.experiment_id)
 
 
     @patch("kfadapter.kfadapter_kfconnect.KfConnect.get_kf_experiment_details")

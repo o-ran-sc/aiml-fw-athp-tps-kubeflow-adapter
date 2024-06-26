@@ -277,7 +277,7 @@ def list_experiments():
     try:
         exp = KFCONNECT_KF_OBJ.get_kf_list_experiments(KFCONNECT_CONFIG_OBJ.kf_dict['kfdefaultns'])
         for experiment in exp.experiments:
-            exp_dict[experiment.name] = experiment.id
+            exp_dict[experiment.display_name] = experiment.experiment_id
     except:# pylint: disable=bare-except
         tbk = traceback.format_exc()
         LOGGER.error(tbk)
