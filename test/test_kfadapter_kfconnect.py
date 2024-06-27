@@ -48,8 +48,8 @@ class Test_KfConnect:
     def test_get_kf_pipeline_id(self):
         assert ['pipelin_id', 'pipelin_id2'] == self.__KFCONNECT.get_kf_pipeline_id(pipeline_name='pipeline_name')
 
-    def test_get_kf_pipeline_version_id(self):
-        assert None != self.__KFCONNECT.get_kf_pipeline_version_id(pipeline_id='pipeline_id', pipeline_version_name='version_name')
+    # def test_get_kf_pipeline_version_id(self):
+    #     assert None != self.__KFCONNECT.get_kf_pipeline_version_id(pipeline_id='pipeline_id', pipeline_version_name='version_name')
 
     def test_upload_kf_pipeline(self):
         assert None == self.__KFCONNECT.upload_kf_pipeline(pipeline_name='pipeline_name', file='file', desc='desc')

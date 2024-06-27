@@ -157,11 +157,10 @@ class KfConnect:
         version_id = None
 
         obj_list = self.kfp_client.list_pipeline_versions(pipeline_id,
-                                                          page_size=1000000000).versions
+                                                          page_size=1000000000).pipeline_versions
         for pipeline_version_obj in obj_list:
-            if pipeline_version_obj.name == pipeline_version_name:
-                version_id = pipeline_version_obj.id
-
+            if pipeline_version_obj.display_name == pipeline_version_name:
+                version_id = pipeline_version_obj.pipeline_version_id
         return version_id
 
     def upload_kf_pipeline(self, pipeline_name, file, desc):
