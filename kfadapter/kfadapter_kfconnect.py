@@ -213,14 +213,16 @@ class KfConnect:
 
         """
         pipeline_id = self.get_kf_pipeline_id(pipeline_name)
+        if pipeline_id == None:
+            return []
         res_obj = self.kfp_client.list_pipeline_versions(pipeline_id,
                                                          page_size=1000000000)
         if res_obj.total_size is None:
             return []
-        obj_list = res_obj.versions
+        obj_list = res_obj.pipeline_versions
         versions_list = []
         for obj in obj_list:
-            versions_list.append(obj.name)
+            versions_list.append(obj.display_name)
         return versions_list
 
     def get_kf_pipeline_desc(self, pipeline_id):

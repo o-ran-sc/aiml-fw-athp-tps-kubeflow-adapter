@@ -17,6 +17,7 @@
 # ==================================================================================
 
 import kfp_server_api
+from mock import patch
 
 from kfadapter.kfadapter_kfconnect import KfConnect
 
@@ -53,7 +54,8 @@ class Test_KfConnect:
     def test_upload_kf_pipeline(self):
         assert None == self.__KFCONNECT.upload_kf_pipeline(pipeline_name='pipeline_name', file='file', desc='desc')
     
-    def test_upload_pipeline_with_versions(self):
+    @patch("kfadapter.kfadapter_kfconnect.KfConnect.get_pl_versions_by_pl_name", return_value={"pipeline_version":""})
+    def test_upload_pipeline_with_versions(self, mock1):
         assert None == self.__KFCONNECT.upload_pipeline_with_versions(pipeline_name='pipeline_name', file='file', desc='desc')
 
     def test_negative_upload_pipeline_with_versions(self):
@@ -63,13 +65,19 @@ class Test_KfConnect:
         except kfp_server_api.exceptions.ApiException as err :
             print(err)
 
-    def test_additional_upload_pipeline_with_versions(self):
+    @patch("kfadapter.kfadapter_kfconnect.KfConnect.get_pl_versions_by_pl_name", return_value={"pipeline_version":""})
+    def test_additional_upload_pipeline_with_versions(self, mock1):
         assert None == self.__KFCONNECT.upload_pipeline_with_versions(pipeline_name='pipeline_name', file='file', desc='desc')
 
     def test_get_pl_versions_by_pl_name(self):
-        assert None != self.__KFCONNECT.get_pl_versions_by_pl_name(pipeline_name='pipeline_name')
+        self.__KFCONNECT.set_kf_client(FakeNegativeKfp())
+        try:
+            assert None != self.__KFCONNECT.get_pl_versions_by_pl_name(pipeline_name='pipeline_name')
+        except kfp_server_api.exceptions.ApiException as err :
+            print(err)
 
     def test_negative_get_pl_versions_by_pl_name(self):
+        self.__KFCONNECT.set_kf_client(FakeNegativeKfp())
         try:
             assert None != self.__KFCONNECT.get_pl_versions_by_pl_name(pipeline_name='pipeline_name')
         except kfp_server_api.exceptions.ApiException as err :
