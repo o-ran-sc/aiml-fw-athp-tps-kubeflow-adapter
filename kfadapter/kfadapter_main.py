@@ -306,13 +306,19 @@ def list_pipelines():
     pipe_dict = {}
     try:
         pipeline_list = KFCONNECT_KF_OBJ.get_kf_list_pipelines()
-
+        pipe_dict['next_page_token'] = pipeline_list.next_page_token
+        pipe_dict['total_size'] = pipeline_list.total_size
+        
+        pipelines = []
         for pipeline in pipeline_list.pipelines:
             pipe_super_dict = {}
-            pipe_param_dict = {}
-            pipe_super_dict['id'] = pipeline.pipeline_id
+            pipe_super_dict['pipeline_id'] = pipeline.pipeline_id
+            pipe_super_dict['display_name'] = pipeline.display_name
             pipe_super_dict['description'] = pipeline.description
-            pipe_dict[pipeline.display_name] = pipe_super_dict
+            pipe_super_dict['created_at'] = pipeline.created_at
+            pipelines.append(pipe_super_dict)
+        pipe_dict['pipelines'] = pipelines
+        
     except:# pylint: disable=bare-except
         tbk = traceback.format_exc()
         LOGGER.error(tbk)
@@ -320,6 +326,7 @@ def list_pipelines():
                 status.HTTP_500_INTERNAL_SERVER_ERROR, {'ext': 1}) from None
 
     return jsonify(pipe_dict), status.HTTP_200_OK
+
 
 @APP.route('/trainingjobs/<trainingjob_name>/execution', methods=['POST'])
 def run_pipeline(trainingjob_name):

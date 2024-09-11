@@ -195,10 +195,14 @@ class testKfadapterApi(TestCase):
         pipeline.pipeline_id = "pipeline-id"
         pipeline.description = "pipeline-description"
         pipeline.display_name= "pipeline-name"
+        pipeline.created_at = "created-at"
+
 
         pipeline_list = ApiListPipelinesResponse()
         pipeline_list.pipelines = [pipeline]
-        
+        pipeline_list.next_page_token = "next-page-token"
+        pipeline_list.total_size = "total-size"
+
         mock_get_kf_list_pipelines.return_value = pipeline_list
         
         # when
@@ -208,8 +212,10 @@ class testKfadapterApi(TestCase):
         mock_get_kf_list_pipelines.assert_called_once()
         self.assertEqual(response.content_type, "application/json")
         self.assertEqual(response.status_code, status.HTTP_200_OK)
-        self.assertEqual(response.get_data(), b'{"pipeline-name":{"description":"pipeline-description","id":"pipeline-id"}}\n')
-    
+        self.assertEqual(response.get_data(), 
+                         b'{"next_page_token":"next-page-token","pipelines":[{"created_at":"created-at","description":"pipeline-description","display_name":"pipeline-name","pipeline_id":"pipeline-id"}],"total_size":"total-size"}\n')
+
+
 
     @patch("kfadapter.kfadapter_kfconnect.KfConnect.get_kf_pipeline_desc")
     def test_get_pipeline(self, mock_get_kf_pipeline_desc):
