@@ -18,11 +18,11 @@
 
 from typing import Optional
 
-from kfp_server_api.models.api_list_pipeline_versions_response import ApiListPipelineVersionsResponse
-from kfp_server_api.models.api_pipeline_version import ApiPipelineVersion
-from kfp_server_api.models.api_experiment import ApiExperiment
-from kfp_server_api.models.api_run_detail import ApiRunDetail
-from kfp_server_api.models.api_run import ApiRun
+from kfp_server_api.models.v2beta1_list_pipeline_versions_response import V2beta1ListPipelineVersionsResponse as ApiListPipelineVersionsResponse
+from kfp_server_api.models.v2beta1_pipeline_version import V2beta1PipelineVersion as ApiPipelineVersion
+from kfp_server_api.models.v2beta1_experiment import V2beta1Experiment as ApiExperiment
+from kfp_server_api.models.v2beta1_run_details import V2beta1RunDetails as ApiRunDetail
+from kfp_server_api.models.v2beta1_run import V2beta1Run as ApiRun
 import kfp_server_api
 
 class FakeKfp:
@@ -41,9 +41,9 @@ class FakeKfp:
         exp = ApiExperiment()
         exp.id = 'ex-id'
         exp.name = 'exp-name'
-        return exp 
+        return exp
 
-    
+
     def upload_pipeline_version(
         self,
         pipeline_package_path,
@@ -70,27 +70,27 @@ class FakeKfp:
                   experiment_id=None,
                   namespace=None,
                   filter=None):
-        
+
         listrun = ApiListRunsResponse()
         run1 = ApiRun()
         run1.id(self, 'id')
-        run1.description(self, 'description') 
-        run1.status(self, 'status')  
+        run1.description(self, 'description')
+        run1.status(self, 'status')
         rr0 = ApiResourceReference()
         rr0.name(self, 'name')
         key0 = ApiResourceKey()
         key0.id(self, 'id')
         rr0.key(self, key0)
-  
+
         rr1 = ApiResourceReference()
         rr1.name(self, 'name')
         key1 = ApiResourceKey()
         key1.id(self, 'id')
         rr1.key(key1)
-    
+
         run1.resource_references(self, rr0)
-        listrun.runs(self, [run1]) 
-    
+        listrun.runs(self, [run1])
+
         return listrun
     """
 
@@ -132,7 +132,7 @@ class FakeKfp:
         service_account: Optional[str] = None,
     ):
         return None
-    
+
 
     def delete_pipeline(self, pipeline_id):
         return None
@@ -145,7 +145,7 @@ class FakeKfp:
                        page_size=10,
                        sort_by=''):
         return None
-    
+
 
     def upload_pipeline(
         self,
@@ -156,7 +156,7 @@ class FakeKfp:
         return None
 
     def get_pipeline_id(self, name):
-        
+
         return ['pipelin_id', 'pipelin_id2',]
 
 
@@ -206,8 +206,8 @@ class FakeNegativeKfp:
                        experiment_name=None,
                        namespace=None):
         raise ValueError(
-                'Either experiment_id or experiment_name is required') 
-    
+                'Either experiment_id or experiment_name is required')
+
 class FakeAdditionalKfp:
     """
     def list_pipeline_versions(
@@ -231,7 +231,7 @@ class FakeAdditionalKfp:
     """
     def get_pipeline_id(self, name):
         return None
-        
+
     def upload_pipeline(
         self,
         pipeline_package_path: str = None,
