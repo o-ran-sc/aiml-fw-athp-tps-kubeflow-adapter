@@ -86,8 +86,8 @@ def get_experiment(expname):
         LOGGER.debug("Experiment name is present")
 
         LOGGER.debug(exp)
-        exp_dict['name'] = exp.name
-        exp_dict['id'] = exp.id
+        exp_dict['name'] = exp.display_name
+        exp_dict['id'] = exp.experiment_id
     except ValueError as err:
         LOGGER.error(err)
         raise BadRequest('Experiment name does not exist', status.HTTP_400_BAD_REQUEST,\
@@ -308,7 +308,7 @@ def list_pipelines():
         pipeline_list = KFCONNECT_KF_OBJ.get_kf_list_pipelines()
         pipe_dict['next_page_token'] = pipeline_list.next_page_token
         pipe_dict['total_size'] = pipeline_list.total_size
-        
+
         pipelines = []
         for pipeline in pipeline_list.pipelines:
             pipe_super_dict = {}
@@ -318,7 +318,7 @@ def list_pipelines():
             pipe_super_dict['created_at'] = pipeline.created_at
             pipelines.append(pipe_super_dict)
         pipe_dict['pipelines'] = pipelines
-        
+
     except:# pylint: disable=bare-except
         tbk = traceback.format_exc()
         LOGGER.error(tbk)
@@ -392,7 +392,7 @@ def run_pipeline(trainingjob_name):
             run_dict['pipeline_name'] = pipe_name
             run_dict['pipeline_id'] = run.pipeline_version_reference.pipeline_id
             if run.state == 'PENDING':
-                run_dict['run_status'] = "scheduled"
+                run_dict['run_state'] = "scheduled"
                 with kfadapter_conf.LOCK:
                     kfadapter_conf.TRAINING_DICT[run.run_id] = trainingjob_name
         else:
@@ -439,18 +439,18 @@ def list_runs():
         runs = KFCONNECT_KF_OBJ.get_kf_list_runs(KFCONNECT_CONFIG_OBJ.kf_dict['kfdefaultns'])
 
         for run in runs.runs:
+            LOGGER.debug(f"Run: {run}")
             run_super_dict = {}
-            run_super_dict['run_id'] = run.id
+            run_super_dict['run_id'] = run.run_id
             run_super_dict['run_description'] = run.description
-            run_super_dict['run_status'] = run.status
-            run_super_dict['experiment_name'] = run.resource_references[0].name
-            run_super_dict['experiment_id'] = run.resource_references[0].key.id
+            run_super_dict['run_state'] = run.state
+            run_super_dict['experiment_id'] = run.experiment_id
 
-            if len(run.resource_references) > 1:
-                run_super_dict['pipeline_name'] = run.resource_references[1].name
-                run_super_dict['pipeline_id'] = run.resource_references[1].key.id
+            if run.pipeline_spec:
+                run_super_dict['pipeline_name'] = run.pipeline_spec.get('pipeline_name')
+                run_super_dict['pipeline_id'] = run.pipeline_spec.get('pipeline_id')
 
-            run_dict[run.name] = run_super_dict
+            run_dict[run.display_name] = run_super_dict
     except:# pylint: disable=bare-except
         tbk = traceback.format_exc()
         LOGGER.error(tbk)
@@ -489,7 +489,7 @@ def kf_run(run_id):
         run_info = KFCONNECT_KF_OBJ.get_kf_run(run_id)
         run_dict['run_id'] = run_info.run_id
         run_dict['run_name'] = run_info.display_name
-        run_dict['run_status'] = run_info.state
+        run_dict['run_state'] = run_info.state
         LOGGER.debug(run_dict)
     except Exception as err:
         LOGGER.error("Exception from KubeFlow in run")
