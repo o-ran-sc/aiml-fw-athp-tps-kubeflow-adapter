@@ -86,8 +86,8 @@ def get_experiment(expname):
         LOGGER.debug("Experiment name is present")
 
         LOGGER.debug(exp)
-        exp_dict['name'] = exp.name
-        exp_dict['id'] = exp.id
+        exp_dict['name'] = exp.display_name
+        exp_dict['id'] = exp.experiment_id
     except ValueError as err:
         LOGGER.error(err)
         raise BadRequest('Experiment name does not exist', status.HTTP_400_BAD_REQUEST,\
@@ -514,6 +514,6 @@ if __name__ == "__main__":
             LOGGER.debug(KFCONNECT_CONFIG_OBJ.appport)
             THR = Thread(target=wait_status_thread, args=(1, KFCONNECT_KF_OBJ))
             THR.start()
-            APP.run(host='0.0.0.0', port=KFCONNECT_CONFIG_OBJ.appport)
+            APP.run(host='0.0.0.0', port=KFCONNECT_CONFIG_OBJ.appport, debug=True)
         except Exception as some_err:# pylint: disable=broad-except
             LOGGER.error(some_err)
