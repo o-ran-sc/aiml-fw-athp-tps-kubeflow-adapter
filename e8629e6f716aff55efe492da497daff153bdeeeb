@@ -1,0 +1,72 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6a42df23_caf1bc0d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 9
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1002137
+      },
+      "writtenOn": "2024-10-17T07:51:38Z",
+      "side": 1,
+      "message": "Thank you for the contribution!",
+      "revId": "e8629e6f716aff55efe492da497daff153bdeeeb",
+      "serverId": "84e4e190-e623-4c37-9eda-58b1937c1b53"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c2f04bcd_baba4557",
+        "filename": "kfadapter/kfadapter_main.py",
+        "patchSetId": 9
+      },
+      "lineNbr": 90,
+      "author": {
+        "id": 1002137
+      },
+      "writtenOn": "2024-10-17T07:51:38Z",
+      "side": 1,
+      "message": "Do we need to change the key names?",
+      "revId": "e8629e6f716aff55efe492da497daff153bdeeeb",
+      "serverId": "84e4e190-e623-4c37-9eda-58b1937c1b53"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "710dd11b_4ac9923f",
+        "filename": "kfadapter/kfadapter_main.py",
+        "patchSetId": 9
+      },
+      "lineNbr": 442,
+      "author": {
+        "id": 1002137
+      },
+      "writtenOn": "2024-10-17T07:51:38Z",
+      "side": 1,
+      "message": "Why don\u0027t you use `LOGGER.debug` instead of print?",
+      "revId": "e8629e6f716aff55efe492da497daff153bdeeeb",
+      "serverId": "84e4e190-e623-4c37-9eda-58b1937c1b53"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d054e97d_3893c508",
+        "filename": "kfadapter/kfadapter_main.py",
+        "patchSetId": 9
+      },
+      "lineNbr": 446,
+      "author": {
+        "id": 1002137
+      },
+      "writtenOn": "2024-10-17T07:51:38Z",
+      "side": 1,
+      "message": "Do we need to change the key name to `run_state`?",
+      "revId": "e8629e6f716aff55efe492da497daff153bdeeeb",
+      "serverId": "84e4e190-e623-4c37-9eda-58b1937c1b53"
+    }
+  ]
+}
