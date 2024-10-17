@@ -34,6 +34,24 @@
       "parentUuid": "1f214fba_338da4a1",
       "revId": "596062811d041645b78ade8d36e693f6bc436835",
       "serverId": "84e4e190-e623-4c37-9eda-58b1937c1b53"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "efb1a900_eaed76ed",
+        "filename": "kfadapter/kfadapter_main.py",
+        "patchSetId": 10
+      },
+      "lineNbr": 446,
+      "author": {
+        "id": 1002075
+      },
+      "writtenOn": "2024-10-17T14:00:48Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "33fc7c19_8f2bde62",
+      "revId": "596062811d041645b78ade8d36e693f6bc436835",
+      "serverId": "84e4e190-e623-4c37-9eda-58b1937c1b53"
     }
   ]
 }
