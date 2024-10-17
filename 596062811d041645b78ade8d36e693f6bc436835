@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1f214fba_338da4a1",
+        "filename": "kfadapter/kfadapter_main.py",
+        "patchSetId": 10
+      },
+      "lineNbr": 446,
+      "author": {
+        "id": 1002075
+      },
+      "writtenOn": "2024-10-17T08:45:01Z",
+      "side": 1,
+      "message": "Please let it be as run_status.",
+      "revId": "596062811d041645b78ade8d36e693f6bc436835",
+      "serverId": "84e4e190-e623-4c37-9eda-58b1937c1b53"
+    }
+  ]
+}
