@@ -22,6 +22,30 @@
       },
       "revId": "a186ebc99c36ee83aa319687b8ae5d2f1139cb4f",
       "serverId": "84e4e190-e623-4c37-9eda-58b1937c1b53"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "33701f88_71a3c794",
+        "filename": ".dockerignore",
+        "patchSetId": 1
+      },
+      "lineNbr": 6,
+      "author": {
+        "id": 1000475
+      },
+      "writtenOn": "2024-11-26T11:26:47Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "23b49b04_7307e78a",
+      "range": {
+        "startLine": 6,
+        "startChar": 0,
+        "endLine": 6,
+        "endChar": 6
+      },
+      "revId": "a186ebc99c36ee83aa319687b8ae5d2f1139cb4f",
+      "serverId": "84e4e190-e623-4c37-9eda-58b1937c1b53"
     }
   ]
 }
