@@ -33,6 +33,29 @@
       "message": "lgtm",
       "revId": "11b3c05bc9d756d498b2bcce1c31649bdc0dd2fb",
       "serverId": "84e4e190-e623-4c37-9eda-58b1937c1b53"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a878a1a5_6c591af6",
+        "filename": "Dockerfile",
+        "patchSetId": 2
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1000475
+      },
+      "writtenOn": "2024-11-27T18:13:56Z",
+      "side": 1,
+      "message": "could you avoid using `\u003d` just to make looks similar.",
+      "range": {
+        "startLine": 22,
+        "startChar": 0,
+        "endLine": 22,
+        "endChar": 21
+      },
+      "revId": "11b3c05bc9d756d498b2bcce1c31649bdc0dd2fb",
+      "serverId": "84e4e190-e623-4c37-9eda-58b1937c1b53"
     }
   ]
 }
