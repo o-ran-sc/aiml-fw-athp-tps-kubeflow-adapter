@@ -486,9 +486,12 @@ def kf_run(run_id):
     run_dict = {}
     try:
         if request.method == 'DELETE':
-            LOGGER.error("Method not supported yet")
-            raise BadRequest("Method not supported yet", status.HTTP_501_NOT_IMPLEMENTED,\
-                   {'ext': 1})
+            LOGGER.debug("Deleting Run_id : " + run_id)
+            KFCONNECT_KF_OBJ.terminate_kf_pipeline(run_id)
+            with kfadapter_conf.LOCK:
+                    # Deleting from global-var so that wait_status_thread should not keep checking this run_id
+                    del kfadapter_conf.TRAINING_DICT[run_id]
+            return {}, status.HTTP_200_OK
 
         run_info = KFCONNECT_KF_OBJ.get_kf_run(run_id)
         run_dict['run_id'] = run_info.run_id

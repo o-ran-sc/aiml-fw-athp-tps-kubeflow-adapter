@@ -280,3 +280,13 @@ class KfConnect:
 
         self.logger.debug("run_kf_pipeline Exited")
         return run
+    
+    
+    def terminate_kf_pipeline(self, run_id):
+        print("Terminating Run: run_id: ", run_id)
+        try:
+            out = self.kfp_client.terminate_run(run_id)
+            print("Terminate Run O/p :: ", out)
+        except Exception as err:
+            self.logger.error("Terminate Run Error :: ", str(err))
+            raise err
