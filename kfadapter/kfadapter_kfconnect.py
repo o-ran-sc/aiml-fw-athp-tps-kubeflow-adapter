@@ -263,12 +263,17 @@ class KfConnect:
 
         """
         self.logger.debug("run_kf_pipeline Entered")
-        job_name=arguments["trainingjob_name"]
+        job_id=arguments["trainingjob_id"]
+        featuregroup_name = arguments["featuregroup_name"]
+        featurepath = featuregroup_name+"_"+job_id
         req_dict={
-            "trainingjob_name":job_name,
+            "featurepath":featurepath,
             "epochs": arguments["epochs"],
-            "version": str(arguments["version"])
+            "modelname": str(arguments["modelName"]),
+            "modelversion": str(arguments["modelVersion"]), 
+            "artifactversion":str(arguments["artifactVersion"])
         }
+        self.logger.debug("run_kf_pipeline Arguments: "+str(req_dict))
         try:
             run = self.kfp_client.run_pipeline(exp_id, job_name="testjob"+\
                                            random_suffix(),
