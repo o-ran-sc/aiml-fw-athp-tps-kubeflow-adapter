@@ -119,7 +119,7 @@ def wait_status_thread(name, kfc_kfconnect):
                     run_dict = {}
                     run_dict['run_id'] = i
                     run_dict['run_status'] = run_status
-                    run_dict['trainingjob_name'] = kfadapter_conf.TRAINING_DICT[i]
+                    run_dict['trainingjob_id'] = kfadapter_conf.TRAINING_DICT[i]
                     logger.info("POSTING to training manager")
                     logger.info(run_dict)
                     payload = json.dumps(run_dict)
