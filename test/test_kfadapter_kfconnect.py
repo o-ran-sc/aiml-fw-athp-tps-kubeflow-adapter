@@ -91,9 +91,12 @@ class Test_KfConnect:
 
     def test_run_kf_pipeline(self):
         assert None == self.__KFCONNECT.run_kf_pipeline(exp_id='exp_id', pipeline_id='pipeline_id', arguments={
-            "trainingjob_name":"job_name",
+            "trainingjob_id":"job_name",
             "epochs": "epochs",
-            "version": "version"}
+            "modelname": "name", 
+            "modelversion":"version",
+            "artifactversion":"version",
+            "featuregroup_name":"fg_name"}
         , version_id='version_id')
     
 
