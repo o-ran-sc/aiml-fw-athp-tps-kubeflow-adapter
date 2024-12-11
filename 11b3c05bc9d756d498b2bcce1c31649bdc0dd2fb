@@ -1,0 +1,10 @@
+Code-Review+2: subhash kumar singh <subh.singh@samsung.com>
+Verified+1: o-ran-sc release <collab-it+o-ran-sc-release@linuxfoundation.org>
+Verified+1: subhash kumar singh <subh.singh@samsung.com>
+Code-Review+1: Swaraj Kumar <swaraj.kumar@samsung.com>
+Verified+1: ORAN Required GHA <releng+oran.required.gha@linuxfoundation.org>
+Submitted-by: subhash kumar singh <subh.singh@samsung.com>
+Submitted-at: Wed, 11 Dec 2024 19:15:59 +0000
+Reviewed-on: https://gerrit.o-ran-sc.org/r/c/aiml-fw/athp/tps/kubeflow-adapter/+/13781
+Project: aiml-fw/athp/tps/kubeflow-adapter
+Branch: refs/heads/master
