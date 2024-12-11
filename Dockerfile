@@ -19,21 +19,19 @@
 FROM ubuntu:22.04
 
 # location in the container
-ENV TA_DIR /home/app/
+ENV TA_DIR=/home/app/
+WORKDIR ${TA_DIR}
 
 # Install dependencies
-RUN apt-get update && apt-get install -y \
-    python3 && apt-get install -y \
-    python3-pip
-WORKDIR ${TA_DIR}
+RUN apt-get update && apt-get install -y --no-install-recommends python3 python3-pip && \
+    apt-get clean && \
+    rm -rf /var/lib/apt/lists/*
 
 # Copy sources into the container
 COPY . .
 
 #Install the pip3 requirements
-RUN pip3 install .
-RUN pip3 install -r requirements.txt
-RUN pip3 install requests-toolbelt==0.10.1
+RUN pip3 install --no-cache-dir -r requirements.txt requests-toolbelt==0.10.1 .
 
 #Expose the ports
 EXPOSE 5000
