@@ -270,8 +270,7 @@ class KfConnect:
             "featurepath":featurepath,
             "epochs": arguments["epochs"],
             "modelname": str(arguments["modelName"]),
-            "modelversion": str(arguments["modelVersion"]), 
-            "artifactversion":str(arguments["artifactVersion"])
+            "modelversion": str(arguments["modelVersion"])
         }
         self.logger.debug("run_kf_pipeline Arguments: "+str(req_dict))
         try:
