@@ -27,16 +27,39 @@ Version history
 | 2023-06-29         | 1.1.0              | Joseph Thaliath    | H release          |
 |                    |                    |                    |                    |
 +--------------------+--------------------+--------------------+--------------------+
-
+| 2025-07-03         | 4.0.0              | SWaraj Kumar       | L release          |
+|                    |                    |                    |                    |
++--------------------+--------------------+--------------------+--------------------+
 
 Summary
 =======
 
-The AIMLFW Kubeflow adapter supports connectivity to Kubeflow for creating AI/ML training pipelines and executing AI/ML training jobs
+The AIMLFW Kubeflow adapter supports connectivity to Kubeflow for creating AI/ML training pipelines and executing AI/ML training jobs. 
 
 
 Release Data
 ============
+
+L Release
+---------
+
++--------------------------------------+------------------------------------------------+
+| **Project**                          | AIMLFW Kubeflow adapter                        |
+|                                      |                                                |
++--------------------------------------+------------------------------------------------+
+| **Repo/commit-ID**                   | aiml-fw/athp/tps/kubeflow-adapter              |
+|                                      | /16c3c821bda389c853021ed8aa27e7ec48cf044b      |
++--------------------------------------+------------------------------------------------+
+| **Release designation**              | L release                                      |
+|                                      |                                                |
++--------------------------------------+------------------------------------------------+
+| **Release date**                     | 2025-07-03                                     |
+|                                      |                                                |
++--------------------------------------+------------------------------------------------+
+| **Purpose of the delivery**          | Maintenance                                    |
+|                                      |                                                |
++--------------------------------------+------------------------------------------------+
+
 
 H Release
 ---------
