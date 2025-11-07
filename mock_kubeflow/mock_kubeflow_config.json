@@ -1,0 +1,160 @@
+{
+    "port": 3000,
+    "protocol": "http",
+    "name": "ml-pipeline-ui",
+    "stubs": [
+        {
+            "predicates":[{"equals":{"method":"GET","path":"pipeline/apis/v2beta1/exeperiments"}}],
+            "responses":[{
+                "is":{
+                    "statusCode": 200,
+                    "headers": { "Content-Type": "application/json"},
+                    "body":{
+                        "experiments":[
+                            {
+                                "experiment_id": "exp-001",
+                                "display_name": "experiment-1",
+                                "description": "test experiment",
+                                "created_at": "2025-11-07T09:39:19.778Z",
+                                "namespace": "",
+                                "storage_state": "STORAGE_STATE_UNSPECIFIED",
+                                "last_run_created_at": "2025-11-07T09:39:19.778Z"
+                            }
+                        ],
+                        "total_size": 1,
+                        "next_page_token": ""
+                    }
+                }
+            }]
+        },
+        {
+            "predicates": [{"equals":{"method":"GET","path":"pipeline/apis/v2beta1/pipelines"}}],
+            "responses":[{
+                "is":{
+                    "statusCode":200,
+                    "headers":{ "Content-Type":"application/json"},
+                    "body":{
+                            "pipelines": [
+                            {
+                            "pipeline_id": "pipe-001",
+                            "display_name": "pipeline-1",
+                            "name": "pipeline-1",
+                            "description": "test pipeline",
+                            "created_at": "2025-11-07T09:52:23.207Z",
+                            "namespace": "",
+                            "error": {
+                                "code": 0,
+                                "message": "",
+                                "details": [
+                                {
+                                    "@type": "",
+                                    "type_url": "",
+                                    "value": "",
+                                    "additionalProp1": "",
+                                    "additionalProp2": "",
+                                    "additionalProp3": ""
+                                }
+                                ]
+                            }
+                            }
+                        ],
+                        "total_size": 1,
+                        "next_page_token": ""
+                        }
+                }
+            }]
+        },
+        {
+            "predicates": [{"equals":{"method":"GET","path":"pipeline/apis/v2beta1/pipelines/.+/versions"}}],
+            "responses":[
+                {
+                    "is":{
+                        "statusCode":200,
+                        "headers":{ "Content-Type":"application/json"},
+                        "body":{
+                                "pipeline_versions": [
+                                    {
+                                    "pipeline_id": "pipe-001",
+                                    "pipeline_version_id": "1",
+                                    "display_name": "pipeline-1",
+                                    "name": "pipeline-1",
+                                    "description": "test pipeline",
+                                    "created_at": "2025-11-07T10:02:07.593Z",
+                                    "package_url": {
+                                        "pipeline_url": ""
+                                    },
+                                    "code_source_url": "",
+                                    "pipeline_spec": {},
+                                    "error": {
+                                        "code": 0,
+                                        "message": "",
+                                        "details": [
+                                        {
+                                            "@type": "",
+                                            "type_url": "",
+                                            "value": "",
+                                            "additionalProp1": "",
+                                            "additionalProp2": "",
+                                            "additionalProp3": ""
+                                        }
+                                        ]
+                                    }
+                                    }
+                                ],
+                                "next_page_token": "",
+                                "total_size": 1
+                            }
+                    }
+                }
+            ]
+        },
+        {
+            "predicates": [{"equals":{"method":"GET","path":"/pipeline/apis/v2beta1/pipelines/.+"}}],
+            "responses": [
+                {
+                    "is":{
+                        "statusCode":200,
+                        "headers":{ "Content-Type":"application/json"},
+                        "body":{
+                            "pipeline_id": "string",
+                            "display_name": "string",
+                            "name": "string",
+                            "description": "string",
+                            "created_at": "2025-11-07T10:06:34.139Z",
+                            "namespace": "string",
+                            "error": {
+                                "code": 0,
+                                "message": "string",
+                                "details": [
+                                {
+                                    "@type": "string",
+                                    "type_url": "string",
+                                    "value": "string",
+                                    "additionalProp1": "string",
+                                    "additionalProp2": "string",
+                                    "additionalProp3": "string"
+                                }
+                                ]
+                            }
+                        }
+                    }
+                }
+            ]
+        },
+        {
+            "predicates":[{"equals":{"method":"GET","path":"pipeline/apis/v2beta1/healthz"}}],
+            "responses":[
+                {
+                    "is":{
+                        "statusCode":200,
+                        "headers": { "Content-Type": "application/json"},
+                        "body":{
+                            "multi_user":true,
+                            "pipeline_store":""
+                        }
+                    }
+                }
+            ]
+        }
+    ]
+}

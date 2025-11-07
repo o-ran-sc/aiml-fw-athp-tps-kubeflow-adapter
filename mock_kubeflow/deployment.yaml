@@ -1,0 +1,55 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: ml-pipeline-ui
+  namespace: kubeflow
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: ml-pipeline-ui
+  template:
+    metadata:
+      labels:
+        app: ml-pipeline-ui
+    spec:
+      containers:
+        - name: mountebank
+          # official mountebank image (no custom Dockerfile)
+          image: bbyars/mountebank:2.9.1
+          # run mb pointing at the mounted config file
+          args:
+            - "start"
+            - "--configfile"
+            - "/imposters/mock_kubeflow_config.json"
+            - "--allowInjection"
+            - "--loglevel"
+            - "info"
+          ports:
+            - name: admin
+              containerPort: 2525
+            - name: mock
+              containerPort: 3000
+          volumeMounts:
+            - name: imposters
+              mountPath: /imposters
+      volumes:
+        - name: imposters
+          configMap:
+            name: mock-kubeflow
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: ml-pipeline-ui
+  namespace: kubeflow
+spec:
+  selector:
+    app: ml-pipeline-ui
+  ports:
+    - name: http
+      port: 3000
+      targetPort: 3000
+    - name: admin
+      port: 2525
+      targetPort: 2525
