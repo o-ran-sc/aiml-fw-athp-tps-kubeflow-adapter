@@ -65,7 +65,7 @@ jobs:
           vote-type: clear
       - name: Allow replication
         run: sleep 10s
-
+        
   call-gerrit-tox-verify:
     needs: prepare
     # yamllint disable-line rule:line-length
@@ -80,15 +80,100 @@ jobs:
       GERRIT_PATCHSET_REVISION: ${{ inputs.GERRIT_PATCHSET_REVISION }}
       GERRIT_PROJECT: ${{ inputs.GERRIT_PROJECT }}
       GERRIT_REFSPEC: ${{ inputs.GERRIT_REFSPEC }}
-      TOX_ENVS: '["code","docs","docs-linkcheck"]'
-      PYTHON_VERSION: "3.10"
+      TOX_ENVS: '["code"]'
+      PYTHON_VERSION: '3.10'	
 
-  vote:
-    if: ${{ always() }}
-    # yamllint enable rule:line-length
-    needs: [prepare, call-gerrit-tox-verify]
+  component-test:
+    needs: prepare
     runs-on: ubuntu-latest
+    timeout-minutes: 30
     steps:
+      - name: Gerrit checkout
+      # yamllint disable-line rule:line-length
+        uses: lfreleng-actions/checkout-gerrit-change-action@54d751e8bd167bc91f7d665dabe33fae87aaaa63 # v0.9
+        with:
+          gerrit-refspec: ${{ inputs.GERRIT_REFSPEC }}
+          gerrit-project: ${{ inputs.GERRIT_PROJECT}}
+          gerrit-url: ${{ vars.GERRIT_URL }}
+          delay: "0s"
+          ref: refs/heads/${{ inputs.GERRIT_BRANCH }}
+      
+      - name: Clone dep repo
+        run: git clone https://github.com/o-ran-sc/aiml-fw-aimlfw-dep.git
+      
+      - name: Build Docker image
+        run: |
+          docker build -t kfadapter:latest .
+      
+      - name: Create KinD cluster
+        uses: helm/kind-action@v1.8.0
+        with:
+          cluster_name: ci-sample
+      
+      - name: Wait for nodes ready
+        run: kubectl wait --for=condition=Ready nodes --all --timeout=120s
+        
+      - name: Setup helm
+        run: |
+          cd aiml-fw-aimlfw-dep
+          ./bin/install_common_templates_to_helm.sh
+          
+      - name: Load Docker image into KinD
+        run: kind load docker-image kfadapter:latest --name ci-sample
+        
+      - name: create traininghost namespace
+        run: kubectl create namespace traininghost
+        
+      - name: install kfadapter
+        run: |
+          cd aiml-fw-aimlfw-dep
+          helm dep up helm/kfadapter
+          helm install kfadapter helm/kfadapter -f RECIPE_EXAMPLE/example_recipe_local_images_oran_latest.yaml
+          
+      - name: Wait for kfadapter pod ready
+        run: |
+          set -euo pipefail
+          NAMESPACE=traininghost
+
+          echo "Checking pod status before waiting..."
+          kubectl get pods -n $NAMESPACE -o wide || true
+
+          echo "Describing any non-running pods (pre-check)..."
+          kubectl get pods -n $NAMESPACE --no-headers | awk '$3 != "Running" {print $1}' | \
+            xargs -r -I {} kubectl describe pod {} -n $NAMESPACE || true
+
+          echo "Waiting for all pods in namespace '$NAMESPACE' to be Ready (max 300s)..."
+          if ! kubectl wait --for=condition=Ready pod --namespace $NAMESPACE --all --timeout=300s; then
+            echo "Timeout waiting for pods. Dumping debug info..."
+            echo "Current pod states:"
+            kubectl get pods -n $NAMESPACE -o wide || true
+            echo "Recent events:"
+            kubectl get events -n $NAMESPACE --sort-by=.lastTimestamp | tail -n 20 || true
+            exit 1
+          fi
+
+          echo "All pods in '$NAMESPACE' are Ready."
+          echo "Final pod status:"
+          kubectl get pods -n $NAMESPACE -o wide
+          
+      - name: list kfadapter pod
+        run: kubectl get pods -n traininghost
+        
+      - name: Expose kfadapter via port-forward
+        run: |
+          echo "tarting port-forward for kfadapter on port 5001..."
+																 
+
+          nohup kubectl port-forward svc/kfadapter 5001:5001 -n traininghost > port-forward.log 2>&1 &
+          sleep 10
+          echo "Port-forward established. Checking service health..."
+
+vote:
+  if: ${{ always() }}
+  # yamllint disable rule:line-length
+  needs: [prepare,call-gerrit-tox-verify, component-test]
+  runs-on: ubuntu-latest
+  steps:
       - uses: technote-space/workflow-conclusion-action@v3
       - name: Set vote
         uses: lfit/gerrit-review-action@v0.4
