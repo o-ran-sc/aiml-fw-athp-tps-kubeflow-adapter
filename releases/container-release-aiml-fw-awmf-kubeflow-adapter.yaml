@@ -1,11 +1,11 @@
 ---
 #Release tag for kubeflow-adapter
 distribution_type: container
-container_release_tag: 4.0.0
+container_release_tag: 5.0.0
 container_pull_registry: nexus3.o-ran-sc.org:10004
 container_push_registry: nexus3.o-ran-sc.org:10002
 project: aiml-fw/athp/tps/kubeflow-adapter
-ref: 16c3c821bda389c853021ed8aa27e7ec48cf044b
+ref: 1be43b28aa8126e42918db92dcfe8b8988b74f8c
 containers:
     - name: aiml-fw-athp-tps-kubeflow-adapter-docker
-      version: 4.0.0
+      version: 5.0.0
